@@ -6,9 +6,7 @@ namespace SmartAutomationService.Model.Connections
     {
         public string ConnectionString()
         {
-            return "Data Source=10.33.2.27,1433;Initial Catalog=SmartMeds;" +
-                   "User Id=smartlink_user;Password=smartlink$;" +
-                   "Persist Security Info=True;";
+            return "Data Source=172.24.50.59,1433;Initial Catalog=SmartMeds;User Id=developer;Password=Welcome123!;Persist Security Info=True;";
         }
     }
 }

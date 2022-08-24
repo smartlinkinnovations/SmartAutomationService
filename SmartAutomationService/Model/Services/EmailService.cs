@@ -22,15 +22,16 @@ namespace SmartAutomationService.Model.Services
             {
                 using var client = new SmtpClient();
                 var mail = new MailMessage();
-                client.Port = 25;
-                client.Host = "sm-svr207.smartmeds.ca";
+                client.Port = 587;
+                client.Host = "smtp.office365.com";
                 client.Timeout = 10000;
-                client.EnableSsl = false;
+                client.EnableSsl = true;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                client.Credentials = new NetworkCredential("notification@smartmeds.ca", "");
+                client.Credentials = new System.Net.NetworkCredential("mailer@carerx.ca", "genPCg~0NY,*9nf1Y9,SKyIZ^f/1v2~k");
+                client.TargetName = "STARTTLS/smtp.office365.com";
                 mail.IsBodyHtml = true;
-                mail.From = new MailAddress("notification@smartmeds.ca", smartMail.DisplayName);
+                mail.From = new MailAddress("mailer@carerx.ca", smartMail.DisplayName);
                 mail.Subject = smartMail.Subject;
                 mail.Body = smartMail.Body;
                 mail.Body += EmailFooter();
@@ -72,19 +73,18 @@ namespace SmartAutomationService.Model.Services
             const string br = "<br>";
             var footer = br + br;
             footer += "Thank you" + br + br;
-            footer += "SmartMeds Pharmacy" + br;
+            footer += "CareRx Oakville" + br;
             footer += "Giving you Smart Options!" + br;
-            footer += "1252 Northside Road" + br;
-            footer += "Burlington, ON L7M 1H6" + br;
-            footer += "Tel:  (905) 336-8672" + br;
-            footer += "Cell: (905) 599-0663" + br;
-            footer += "Fax:  (905) 336-8509" + br + br;
+            footer += "3430 Superior Court" + br;
+            footer += "Oakville, ON L6L 0C4" + br;
+            footer += "Tel:  (833) 247-4316 ext 834" + br;
+            footer += "Fax:  (866) 336-8509" + br + br;
             footer +=
                 "<small><b>IMPORTANT NOTICE:</b> This message is intended only for the use of the individual or entity to which it is addressed. " +
                 "The message may contain information that is privileged, confidential and exempt from disclosure under applicable law. " +
                 "If the reader of this message is not the intended recipient, or the employee or agent responsible for delivering the message " +
                 "to the intended recipient, you are notified that any dissemination, distribution or copying of this communication is strictly " +
-                "prohibited. If you have received this communication in error, please notify SmartMeds immediately by email at privacy@smartmeds.ca. </small>";
+                "prohibited. If you have received this communication in error, please notify CareRx immediately by email at privacy@smartmeds.ca. </small>";
             return footer;
         }
     }

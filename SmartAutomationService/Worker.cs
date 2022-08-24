@@ -85,9 +85,8 @@ namespace SmartAutomationService
             _folderWatcher.EnableRaisingEvents = false;
             // Send Email ......
             var smartEmail = new SmartMail();
-            smartEmail.ReplyTo.Add("Technology@SMARTMEDS.CA");
-            smartEmail.SendTo.Add("Technology@SMARTMEDS.CA");
-            smartEmail.SendTo.Add("tamer.rabie@SMARTMEDS.CA");
+            smartEmail.ReplyTo.Add("ujjwal.dhawan@thesmartlink.ca");
+            smartEmail.SendTo.Add("anil.kumar@thesmartlink.ca");
             smartEmail.Subject = "Automation Service Stopped !!";
             smartEmail.Body = "Smart Automation Service Stopped at (" + DateTimeOffset.Now.ToString("F") + ")";
             smartEmail.DisplayName = "Technology Team";

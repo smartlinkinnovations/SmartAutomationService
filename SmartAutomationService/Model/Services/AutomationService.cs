@@ -27,6 +27,7 @@ namespace SmartAutomationService.Model.Services
             {
                 var krollToDo = new KrollToDo();
                 var rxNum = Convert.ToInt32(smartLinkOrder.RxNum);
+                _utilService.WriteToLog("Print RxNum", rxNum.ToString(), true);
                 var rxList = _krollApiService.SearchRx(rxNum);
                 if (rxList != null && rxList.Count > 0)
                 {

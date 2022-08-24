@@ -16,9 +16,10 @@ namespace SmartAutomationService.Model.Services
     {
         private readonly IHostEnvironment _env;
         private readonly UtilService _utilService;
-        private const string CertificatePassword = "SmartMeds1252!";
+        private const string CertificatePath = @"KrollLib\Certificates\medicalpharmacies.com.p12";
+        private const string CertificatePassword = "";
         private const string HostServiceName = "KrollAPIService";
-        private const string HostName = "10.33.2.56";
+        private const string HostName = "172.24.50.100";
         private const int HostPort = 38332;
         private readonly TimeSpan _connectionTimeout;
 
@@ -35,7 +36,7 @@ namespace SmartAutomationService.Model.Services
             try
             {
                 var certificateFullFileName =
-                    Path.Combine(Directory.GetCurrentDirectory(), @"KrollLib\Certificates\certificate.p12");
+                    Path.Combine(Directory.GetCurrentDirectory(), CertificatePath);
                 var cert = new X509Certificate2(certificateFullFileName, CertificatePassword);
                 client.Connect(HostName, HostPort, HostServiceName, cert, _connectionTimeout, 
                     KxProtoMessageSerializationType.KxProto);
@@ -44,7 +45,6 @@ namespace SmartAutomationService.Model.Services
             catch (Exception e)
             {
                 _utilService.WriteToLog(e.Source, e.Message, true);
-                Console.WriteLine(e);
                 return null;
             }
         }
@@ -72,7 +72,6 @@ namespace SmartAutomationService.Model.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
                 _utilService.WriteToLog(e.Source, e.Message, true);
                 return null;
             }
